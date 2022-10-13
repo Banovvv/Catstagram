@@ -8,6 +8,14 @@ namespace Catstagram.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<User> user)
         {
+            user
+                .HasIndex(x => x.Username)
+                .IsUnique();
+
+            user
+                .HasIndex(x => x.Email)
+                .IsUnique();
+
             throw new NotImplementedException();
         }
     }
