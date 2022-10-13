@@ -1,4 +1,5 @@
-﻿using Catstagram.Data.Models;
+﻿using Catstagram.Data.Configurations;
+using Catstagram.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Catstagram.Data
@@ -27,7 +28,8 @@ namespace Catstagram.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            new UserEntityTypeConfiguration().Configure(modelBuilder.Entity<User>());
+            new PostEntityTypeConfiguration().Configure(modelBuilder.Entity<Post>());
         }
     }
 }
