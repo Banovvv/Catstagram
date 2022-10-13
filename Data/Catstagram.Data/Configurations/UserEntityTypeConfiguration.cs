@@ -8,15 +8,43 @@ namespace Catstagram.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<User> user)
         {
-            user
-                .HasIndex(x => x.Username)
+            user.HasIndex(x => x.Username)
                 .IsUnique();
 
-            user
-                .HasIndex(x => x.Email)
+            user.HasIndex(x => x.Email)
                 .IsUnique();
 
-            throw new NotImplementedException();
+            user.Property(x => x.Username)
+                .IsRequired(true)
+                .HasMaxLength(50)
+                .IsUnicode(true);
+
+            user.Property(x => x.Email)
+                .IsRequired(true)
+                .HasMaxLength(50)
+                .IsUnicode(true);
+
+            user.Property(x => x.Password)
+                .IsRequired(true)
+                .HasMaxLength(75)
+                .IsUnicode(true);
+
+            user.Property(x => x.FirstName)
+                .IsRequired(true)
+                .HasMaxLength(50)
+                .IsUnicode(true);
+
+            user.Property(x => x.LastName)
+                .IsRequired(true)
+                .HasMaxLength(50)
+                .IsUnicode(true);
+
+            user.Property(x => x.CreatedOn)
+                .HasDefaultValueSql("GETDATE()")
+                .IsRequired(true);
+
+            user.Property(x => x.LastUpdatedOn)
+                .IsRequired(false);
         }
     }
 }
