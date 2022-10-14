@@ -5,6 +5,7 @@
         public User()
         {
             Posts = new HashSet<Post>();
+            Likes = new HashSet<Like>();
         }
 
         public int Id { get; set; }
@@ -17,5 +18,6 @@
         public DateTime? LastUpdatedOn { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<Like> Likes { get; set; }
     }
 }

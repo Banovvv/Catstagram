@@ -17,6 +17,7 @@ namespace Catstagram.Data
 
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<Like> Likes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -30,6 +31,7 @@ namespace Catstagram.Data
         {
             new UserEntityTypeConfiguration().Configure(modelBuilder.Entity<User>());
             new PostEntityTypeConfiguration().Configure(modelBuilder.Entity<Post>());
+            new LikeEntityTypeConfiguration().Configure(modelBuilder.Entity<Like>());
         }
     }
 }

@@ -25,6 +25,10 @@ namespace Catstagram.Data.Configurations
 
             post.Property(x => x.UserId)
                 .IsRequired(true);
+
+            post.HasMany(x => x.Likes)
+                .WithOne(x => x.Post)
+                .OnDelete(DeleteBehavior.ClientSetNull);
         }
     }
 }

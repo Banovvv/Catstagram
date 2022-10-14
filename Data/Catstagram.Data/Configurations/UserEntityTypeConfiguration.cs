@@ -45,6 +45,10 @@ namespace Catstagram.Data.Configurations
 
             user.Property(x => x.LastUpdatedOn)
                 .IsRequired(false);
+
+            user.HasMany(x => x.Likes)
+                .WithOne(x => x.User)
+                .OnDelete(DeleteBehavior.ClientSetNull);
         }
     }
 }
