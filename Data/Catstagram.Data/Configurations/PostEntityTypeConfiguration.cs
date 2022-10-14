@@ -8,7 +8,26 @@ namespace Catstagram.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Post> post)
         {
-            throw new NotImplementedException();
+            post.Property(x => x.Caption)
+                .IsRequired(true)
+                .HasMaxLength(250)
+                .IsUnicode(true);
+
+            post.Property(x => x.Image)
+                .IsRequired(true);
+
+            post.Property(x => x.CreatedOn)
+                .HasDefaultValueSql("GETDATE()")
+                .IsRequired(true);
+
+            post.Property(x => x.LastUpdatedOn)
+                .IsRequired(false);
+
+            post.Property(x => x.UserId)
+                .IsRequired(true);
+
+            post.HasOne(x => x.User)
+                .WithMany(u => u.Posts);
         }
     }
 }

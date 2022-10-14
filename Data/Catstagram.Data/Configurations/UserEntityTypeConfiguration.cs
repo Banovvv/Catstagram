@@ -45,6 +45,9 @@ namespace Catstagram.Data.Configurations
 
             user.Property(x => x.LastUpdatedOn)
                 .IsRequired(false);
+
+            user.HasMany(x => x.Posts)
+                .WithOne(p => p.User);
         }
     }
 }
