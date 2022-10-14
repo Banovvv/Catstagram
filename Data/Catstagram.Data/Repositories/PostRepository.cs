@@ -15,6 +15,13 @@ namespace Catstagram.Data.Repositories
             return this.AllAsNoTracking().Count();
         }
 
+        public async Task<Post?> GetByIdAsync(int id)
+        {
+            return await this.DbSet
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<Post>> GetAllAsync()
         {
             return await this.DbSet
