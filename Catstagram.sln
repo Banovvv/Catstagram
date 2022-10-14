@@ -5,11 +5,15 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{A02A38DD-0289-4E7C-BD2D-BC7CB066220F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catstagram.Data", "Data\Catstagram.Data\Catstagram.Data.csproj", "{74ACC406-CE2F-49E0-B326-D9E288671FA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catstagram.Data", "Data\Catstagram.Data\Catstagram.Data.csproj", "{74ACC406-CE2F-49E0-B326-D9E288671FA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catstagram.Data.Models", "Data\Catstagram.Data.Models\Catstagram.Data.Models.csproj", "{CC817730-1B8C-415D-B90D-47EFAE5D50B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catstagram.Data.Models", "Data\Catstagram.Data.Models\Catstagram.Data.Models.csproj", "{CC817730-1B8C-415D-B90D-47EFAE5D50B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catstagram.Data.Common", "Data\Catstagram.Data.Common\Catstagram.Data.Common.csproj", "{0D8B5759-C7A8-4851-859A-5158DF535312}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catstagram.Data.Common", "Data\Catstagram.Data.Common\Catstagram.Data.Common.csproj", "{0D8B5759-C7A8-4851-859A-5158DF535312}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{A22DA830-A4F8-4C3F-91E0-6FD71F9AA7F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catstagram.Services.Data", "Services\Catstagram.Services.Data\Catstagram.Services.Data.csproj", "{4E3F0674-E299-48FD-AB88-F7FFBC07369E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +33,10 @@ Global
 		{0D8B5759-C7A8-4851-859A-5158DF535312}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D8B5759-C7A8-4851-859A-5158DF535312}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D8B5759-C7A8-4851-859A-5158DF535312}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E3F0674-E299-48FD-AB88-F7FFBC07369E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E3F0674-E299-48FD-AB88-F7FFBC07369E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E3F0674-E299-48FD-AB88-F7FFBC07369E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E3F0674-E299-48FD-AB88-F7FFBC07369E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +45,7 @@ Global
 		{74ACC406-CE2F-49E0-B326-D9E288671FA2} = {A02A38DD-0289-4E7C-BD2D-BC7CB066220F}
 		{CC817730-1B8C-415D-B90D-47EFAE5D50B5} = {A02A38DD-0289-4E7C-BD2D-BC7CB066220F}
 		{0D8B5759-C7A8-4851-859A-5158DF535312} = {A02A38DD-0289-4E7C-BD2D-BC7CB066220F}
+		{4E3F0674-E299-48FD-AB88-F7FFBC07369E} = {A22DA830-A4F8-4C3F-91E0-6FD71F9AA7F2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {33D3D880-3F7F-4FCA-883D-511F02A06A93}
