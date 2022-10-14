@@ -41,6 +41,5 @@ namespace Catstagram.Data.Repositories
                 .Where(x => x.Username == username)
                 .FirstOrDefaultAsync();
         }
-
     }
 }
