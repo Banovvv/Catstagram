@@ -21,18 +21,26 @@ namespace Catstagram.Data.Repositories
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<User>> GetByIdAsync(int id)
+        public async Task<User?> GetByIdAsync(int id)
         {
             return await this.DbSet
                 .Where(x => x.Id == id)
-                .ToListAsync();
+                .FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<User>> GetByUsernameAsync(string username)
+        public async Task<User?> GetByEmailAsync(string email)
+        {
+            return await this.DbSet
+                .Where(x => x.Email == email)
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<User?> GetByUsernameAsync(string username)
         {
             return await this.DbSet
                 .Where(x => x.Username == username)
-                .ToListAsync();
+                .FirstOrDefaultAsync();
         }
+
     }
 }
