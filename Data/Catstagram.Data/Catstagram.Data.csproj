@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Catstagram.Data.Models\Catstagram.Data.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>

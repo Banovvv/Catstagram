@@ -25,9 +25,6 @@ namespace Catstagram.Data.Configurations
 
             post.Property(x => x.UserId)
                 .IsRequired(true);
-
-            post.HasOne(x => x.User)
-                .WithMany(u => u.Posts);
         }
     }
 }
