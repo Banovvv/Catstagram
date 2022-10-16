@@ -4,6 +4,7 @@
     {
         public Post()
         {
+            Tags = new HashSet<Tag>();
             Likes = new HashSet<Like>();
         }
 
@@ -16,6 +17,7 @@
         public int UserId { get; set; }
         public virtual User User { get; set; }
 
+        public virtual ICollection<Tag> Tags { get; set; }
         public virtual ICollection<Like> Likes { get; set; }
     }
 }
