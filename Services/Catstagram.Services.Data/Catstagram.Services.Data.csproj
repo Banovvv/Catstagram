@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\Catstagram.Data.Common\Catstagram.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\Catstagram.Data.Models\Catstagram.Data.Models.csproj" />
+  </ItemGroup>
+
 </Project>
