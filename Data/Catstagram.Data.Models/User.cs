@@ -6,6 +6,7 @@
         {
             Posts = new HashSet<Post>();
             Likes = new HashSet<Like>();
+            Comments = new HashSet<Comment>();
         }
 
         public int Id { get; set; }
@@ -19,5 +20,6 @@
 
         public virtual ICollection<Post> Posts { get; set; }
         public virtual ICollection<Like> Likes { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }
