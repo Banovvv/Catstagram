@@ -29,6 +29,10 @@ namespace Catstagram.Data.Configurations
             post.HasMany(x => x.Likes)
                 .WithOne(x => x.Post)
                 .OnDelete(DeleteBehavior.ClientSetNull);
+
+            post.HasMany(x => x.Comments)
+                .WithOne(x => x.Post)
+                .OnDelete(DeleteBehavior.ClientSetNull);
         }
     }
 }
