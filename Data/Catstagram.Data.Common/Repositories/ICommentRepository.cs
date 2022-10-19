@@ -6,8 +6,8 @@ namespace Catstagram.Data.Common.Repositories
     {
         int GetCount();
         Task<Comment?> GetByIdAsync(int id);
-        Task<IEnumerable<Comment>> GetAllByUsernameAsync(string username);
-        Task<IEnumerable<Comment>> GetAllByUserIdAsync(int id);
-        Task<IEnumerable<Comment>> GetAllByPostIdAsync(int id);
+        Task<IEnumerable<Comment>> GetAllByUserAsync(string username);
+        Task<IEnumerable<Comment>> GetAllByUserAsync(int id);
+        Task<IEnumerable<Comment>> GetAllByPostAsync(int id);
     }
 }
