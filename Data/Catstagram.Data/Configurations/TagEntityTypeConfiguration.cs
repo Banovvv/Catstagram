@@ -1,4 +1,5 @@
-﻿using Catstagram.Data.Models;
+﻿using Catstagram.Data.Configurations.Constants;
+using Catstagram.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -10,7 +11,7 @@ namespace Catstagram.Data.Configurations
         {
             tag.Property(x => x.Name)
                 .IsRequired(true)
-                .HasMaxLength(50)
+                .HasMaxLength(ConfigurationConstants.TagNameMaxLength)
                 .IsUnicode(true);
         }
     }

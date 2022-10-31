@@ -1,4 +1,5 @@
-﻿using Catstagram.Data.Models;
+﻿using Catstagram.Data.Configurations.Constants;
+using Catstagram.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -10,7 +11,7 @@ namespace Catstagram.Data.Configurations
         {
             post.Property(x => x.Caption)
                 .IsRequired(true)
-                .HasMaxLength(250)
+                .HasMaxLength(ConfigurationConstants.PostCaptionMaxLength)
                 .IsUnicode(true);
 
             post.Property(x => x.Image)

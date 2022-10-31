@@ -1,4 +1,5 @@
-﻿using Catstagram.Data.Models;
+﻿using Catstagram.Data.Configurations.Constants;
+using Catstagram.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -16,27 +17,27 @@ namespace Catstagram.Data.Configurations
 
             user.Property(x => x.Username)
                 .IsRequired(true)
-                .HasMaxLength(50)
+                .HasMaxLength(ConfigurationConstants.UserUsernameMaxLength)
                 .IsUnicode(true);
 
             user.Property(x => x.Email)
                 .IsRequired(true)
-                .HasMaxLength(50)
+                .HasMaxLength(ConfigurationConstants.UserEmailMaxLength)
                 .IsUnicode(true);
 
             user.Property(x => x.Password)
                 .IsRequired(true)
-                .HasMaxLength(75)
+                .HasMaxLength(ConfigurationConstants.UserPasswordMaxLength)
                 .IsUnicode(true);
 
             user.Property(x => x.FirstName)
                 .IsRequired(true)
-                .HasMaxLength(50)
+                .HasMaxLength(ConfigurationConstants.UserFirstNameMaxLength)
                 .IsUnicode(true);
 
             user.Property(x => x.LastName)
                 .IsRequired(true)
-                .HasMaxLength(50)
+                .HasMaxLength(ConfigurationConstants.UserLastNameMaxLength)
                 .IsUnicode(true);
 
             user.Property(x => x.CreatedOn)
