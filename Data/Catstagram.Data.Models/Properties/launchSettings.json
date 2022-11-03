@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Catstagram.Data.Models": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:54364;http://localhost:54365"
+    }
+  }
+}
