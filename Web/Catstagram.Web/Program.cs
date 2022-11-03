@@ -1,7 +1,19 @@
+using Microsoft.OpenApi.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Catstagram_API",
+        Version = "v1"
+    });
+});
 
 var app = builder.Build();
 
@@ -13,6 +25,9 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseSwagger();
+app.UseSwaggerUI();
+app.MapControllers();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
