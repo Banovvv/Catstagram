@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Services\Catstagram.Services.Data\Catstagram.Services.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Update="wwwroot\catstagram.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
