@@ -1,4 +1,5 @@
 ﻿using Catstagram.Data.Models;
+using Catstagram.Services.Data.Models;
 
 namespace Catstagram.Services.Data.Contracts
 {
@@ -7,6 +8,7 @@ namespace Catstagram.Services.Data.Contracts
         int GetCount();
         Task<Post?> GetByIdAsync(int id);
         Task<IEnumerable<Post>> GetAllAsync();
+        Task<IEnumerable<PostHomeModel>> GetTopTenAsync();
         Task<IEnumerable<Post>> GetByUserIdAsync(int userId);
         Task<IEnumerable<Post>> GetByUsernameAsync(string username);
     }

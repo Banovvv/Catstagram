@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Services\Catstagram.Services.Data\Catstagram.Services.Data.csproj" />
     <ProjectReference Include="..\Catstagram.Data.Common\Catstagram.Data.Common.csproj" />
     <ProjectReference Include="..\Catstagram.Data.Models\Catstagram.Data.Models.csproj" />
   </ItemGroup>

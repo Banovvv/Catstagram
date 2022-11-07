@@ -42,5 +42,16 @@ namespace Catstagram.Data.Repositories
                 .Where(x => x.User.Username == username)
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<Post>> GetTopTenAsync()
+        {
+            return await this.DbSet
+                .Include(x => x.User)
+                .Include(x => x.Likes)
+                .Include(x => x.Comments)
+                .OrderByDescending(x => x.CreatedOn)
+                .Take(10)
+                .ToListAsync();
+        }
     }
 }

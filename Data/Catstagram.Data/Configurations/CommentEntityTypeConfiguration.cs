@@ -9,7 +9,7 @@ namespace Catstagram.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Comment> comment)
         {
-            comment.Property(x => x.Text)
+            comment.Property(x => x.Content)
                 .IsRequired(true)
                 .HasMaxLength(ConfigurationConstants.CommentTextMaxLength)
                 .IsUnicode(true);

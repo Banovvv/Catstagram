@@ -1,6 +1,7 @@
 ﻿using Catstagram.Data.Common.Repositories;
 using Catstagram.Data.Models;
 using Catstagram.Services.Data.Contracts;
+using Catstagram.Services.Data.Models;
 
 namespace Catstagram.Services.Data
 {
@@ -36,6 +37,32 @@ namespace Catstagram.Services.Data
         public int GetCount()
         {
             return this.repository.GetCount();
+        }
+
+        public async Task<IEnumerable<PostHomeModel>> GetTopTenAsync()
+        {
+            var posts = await this.repository.GetTopTenAsync();
+            var postModels = new List<PostHomeModel>();
+
+            foreach (var post in posts)
+            {
+                var postModel = new PostHomeModel()
+                {
+                    Author = post.User.Username,
+                    Caption = post.Caption,
+                    Image = post.Image,
+                    Likes = post.Likes.Count(),
+                    TopComment = new CommentHomeModel()
+                    {
+                        Author = post.Comments.First()?.User.Username,
+                        Content = post.Comments.First()?.Content
+                    }
+                };
+
+                postModels.Add(postModel);
+            }
+
+            return postModels;
         }
     }
 }
