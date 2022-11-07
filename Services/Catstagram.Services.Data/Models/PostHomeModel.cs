@@ -2,6 +2,11 @@
 {
     public class PostHomeModel
     {
+        public PostHomeModel()
+        {
+        }
+
+        public int Id { get; set; }
         public string Caption { get; set; }
         public string Author { get; set; }
         public byte[] Image { get; set; }

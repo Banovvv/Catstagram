@@ -1,5 +1,4 @@
 ﻿using Catstagram.Data.Models;
-using Catstagram.Services.Data.Models;
 
 namespace Catstagram.Data.Common.Repositories
 {

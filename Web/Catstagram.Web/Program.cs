@@ -1,6 +1,16 @@
+using Catstagram.Data;
+using Catstagram.Data.Common.Repositories;
+using Catstagram.Data.Repositories;
+using Catstagram.Services.Data;
+using Catstagram.Services.Data.Contracts;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var configuration = builder.Configuration;
+configuration
+    .AddJsonFile("appsettings.json", false);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -14,6 +24,12 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1"
     });
 });
+
+builder.Services
+    .AddDbContext<CatsDataContext>(options =>
+        options.UseSqlServer(configuration.GetConnectionString("DefaultConnectionString")));
+builder.Services.AddScoped<IPostRepository, PostRepository>();
+builder.Services.AddScoped<IPostService, PostService>();
 
 var app = builder.Build();
 

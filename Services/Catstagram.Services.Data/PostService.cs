@@ -48,6 +48,7 @@ namespace Catstagram.Services.Data
             {
                 var postModel = new PostHomeModel()
                 {
+                    Id = post.Id,
                     Author = post.User.Username,
                     Caption = post.Caption,
                     Image = post.Image,
