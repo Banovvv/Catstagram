@@ -16,7 +16,7 @@ namespace Catstagram.Web.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var model = await _postService.GetAllAsync();
+            var model = await _postService.GetTopTenAsync();
 
             return View(model);
         }
