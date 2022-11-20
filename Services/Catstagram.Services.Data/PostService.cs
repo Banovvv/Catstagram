@@ -8,21 +8,21 @@ namespace Catstagram.Services.Data
 {
     public class PostService : IPostService
     {
-        private readonly IPostRepository repository;
+        private readonly IPostRepository _repository;
 
         public PostService(IPostRepository repository)
         {
-            this.repository = repository;
+            _repository = repository;
         }
 
         public async Task<IEnumerable<Post>> GetAllAsync()
         {
-            return await this.repository.GetAllAsync();
+            return await _repository.GetAllAsync();
         }
 
         public async Task<Post?> GetByIdAsync(int id)
         {
-            var post = await this.repository.GetByIdAsync(id);
+            var post = await _repository.GetByIdAsync(id);
 
             if (post == null)
             {
@@ -34,22 +34,22 @@ namespace Catstagram.Services.Data
 
         public async Task<IEnumerable<Post>> GetByUserIdAsync(int userId)
         {
-            return await this.repository.GetByUserIdAsync(userId);
+            return await _repository.GetByUserIdAsync(userId);
         }
 
         public async Task<IEnumerable<Post>> GetByUsernameAsync(string username)
         {
-            return await this.repository.GetByUsernameAsync(username);
+            return await _repository.GetByUsernameAsync(username);
         }
 
         public int GetCount()
         {
-            return this.repository.GetCount();
+            return _repository.GetCount();
         }
 
         public async Task<IEnumerable<PostHomeModel>> GetTopTenAsync()
         {
-            var posts = await this.repository.GetTopTenAsync();
+            var posts = await _repository.GetTopTenAsync();
             var postModels = new List<PostHomeModel>();
 
             foreach (var post in posts)
