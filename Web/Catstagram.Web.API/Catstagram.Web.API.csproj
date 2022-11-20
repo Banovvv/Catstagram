@@ -15,4 +15,8 @@
     <ProjectReference Include="..\..\Data\Catstagram.Data\Catstagram.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mapping\Models\" />
+  </ItemGroup>
+
 </Project>

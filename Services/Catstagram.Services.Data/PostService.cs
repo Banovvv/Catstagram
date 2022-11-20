@@ -1,4 +1,5 @@
-﻿using Catstagram.Data.Common.Repositories;
+﻿using Catstagram.Data.Common.Exceptions.Models;
+using Catstagram.Data.Common.Repositories;
 using Catstagram.Data.Models;
 using Catstagram.Services.Data.Contracts;
 using Catstagram.Services.Data.Models;
@@ -21,7 +22,14 @@ namespace Catstagram.Services.Data
 
         public async Task<Post?> GetByIdAsync(int id)
         {
-            return await this.repository.GetByIdAsync(id);
+            var post = await this.repository.GetByIdAsync(id);
+
+            if (post == null)
+            {
+                throw new NotFoundException("Post not found!");
+            }
+
+            return post;
         }
 
         public async Task<IEnumerable<Post>> GetByUserIdAsync(int userId)
