@@ -8,6 +8,9 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var configuration = builder.Configuration;
+configuration.AddJsonFile("appsettings.json", false);
+
 // Add services to the container.
 
 builder.Services.AddControllers();
