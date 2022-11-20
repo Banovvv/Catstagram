@@ -1,3 +1,9 @@
+using Catstagram.Data;
+using Catstagram.Data.Common.Repositories;
+using Catstagram.Data.Repositories;
+using Catstagram.Services.Data;
+using Catstagram.Services.Data.Contracts;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,7 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -15,6 +20,12 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1"
     });
 });
+
+builder.Services
+    .AddDbContext<CatsDataContext>(options =>
+        options.UseSqlServer(configuration.GetConnectionString("DefaultConnectionString")));
+builder.Services.AddScoped<IPostRepository, PostRepository>();
+builder.Services.AddScoped<IPostService, PostService>();
 
 var app = builder.Build();
 
