@@ -1,13 +1,9 @@
 ﻿using AutoFixture;
 using AutoFixture.AutoMoq;
 using Catstagram.Data.Common.Repositories;
+using Catstagram.Data.Models;
 using Catstagram.Services.Data;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Catstagram.Web.API.Tests.Services
 {
@@ -25,12 +21,26 @@ namespace Catstagram.Web.API.Tests.Services
             _postService = new PostService(_postRepository.Object);
         }
 
+        [Fact]
+        public async Task GetAllAsync_ReturnsAllArticles()
+        {
+            var posts = _fixture.Build<Post>().CreateMany(5);
+
+            _postRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(posts);
+
+            //Act
+            var result = await _postService.GetAllAsync();
+
+            //Assert
+            Assert.Equal(posts.Count(), result.Count());
+        }
+
         private IFixture SetupAutoFixture()
         {
             var fixture = new Fixture().Customize(new AutoMoqCustomization());
             fixture.Behaviors
                 .OfType<ThrowingRecursionBehavior>().ToList()
-                .ForEach(b => _fixture.Behaviors.Remove(b));
+                .ForEach(b => fixture.Behaviors.Remove(b));
             fixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
             return fixture;
