@@ -8,7 +8,7 @@ namespace Catstagram.Services.Data.Contracts
         int GetCount();
         Task<Post?> GetByIdAsync(int id);
         Task<IEnumerable<Post>> GetAllAsync();
-        Task<IEnumerable<PostHomeModel>> GetTopTenAsync();
+        Task<IEnumerable<Post>> GetTopTenAsync();
         Task<IEnumerable<Post>> GetByUserIdAsync(int userId);
         Task<IEnumerable<Post>> GetByUsernameAsync(string username);
     }

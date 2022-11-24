@@ -47,31 +47,11 @@ namespace Catstagram.Services.Data
             return _repository.GetCount();
         }
 
-        public async Task<IEnumerable<PostHomeModel>> GetTopTenAsync()
+        public async Task<IEnumerable<Post>> GetTopTenAsync()
         {
             var posts = await _repository.GetTopTenAsync();
-            var postModels = new List<PostHomeModel>();
 
-            foreach (var post in posts)
-            {
-                var postModel = new PostHomeModel()
-                {
-                    Id = post.Id,
-                    Author = post.User.Username,
-                    Caption = post.Caption,
-                    Image = post.Image,
-                    Likes = post.Likes.Count(),
-                    TopComment = new CommentHomeModel()
-                    {
-                        Author = post.Comments.First()?.User.Username,
-                        Content = post.Comments.First()?.Content
-                    }
-                };
-
-                postModels.Add(postModel);
-            }
-
-            return postModels;
+            return posts;
         }
     }
 }

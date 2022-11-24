@@ -24,8 +24,8 @@ namespace Catstagram.Web.API.Tests.Services
         [Fact]
         public async Task GetAllAsync_ReturnsAllArticles()
         {
+            //Assert
             var posts = _fixture.Build<Post>().CreateMany(5);
-
             _postRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(posts);
 
             //Act
@@ -33,6 +33,34 @@ namespace Catstagram.Web.API.Tests.Services
 
             //Assert
             Assert.Equal(posts.Count(), result.Count());
+        }
+
+        [Fact]
+        public void GetCount_ReturnsAccurateResult()
+        {
+            //Assert
+            var posts = _fixture.Build<Post>().CreateMany(5);
+            _postRepository.Setup(x => x.GetCount()).Returns(posts.Count);
+
+            //Act
+            var result = _postService.GetCount();
+
+            //Assert
+            Assert.Equal(posts.Count(), result);
+        }
+
+        [Fact]
+        public async Task GetTopTenAsync_ReturnsAcurateResult()
+        {
+            //Assert
+            var posts = _fixture.Build<Post>().CreateMany(15);
+            _postRepository.Setup(x => x.GetTopTenAsync()).ReturnsAsync(posts.Take(10));
+
+            //Act
+            var result = await _postService.GetTopTenAsync();
+
+            //Assert
+            Assert.Equal(10, result.Count());
         }
 
         private IFixture SetupAutoFixture()
