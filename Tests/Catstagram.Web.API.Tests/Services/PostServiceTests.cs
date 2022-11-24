@@ -89,7 +89,7 @@ namespace Catstagram.Web.API.Tests.Services
             Assert.Equal(10, result.Count());
         }
 
-        private IFixture SetupAutoFixture()
+        private static IFixture SetupAutoFixture()
         {
             var fixture = new Fixture().Customize(new AutoMoqCustomization());
             fixture.Behaviors
