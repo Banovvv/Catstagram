@@ -19,16 +19,21 @@ namespace Catstagram.Web.API.Tests.Services
 
         public PostServiceTests()
         {
-            _postRepository = new Mock<IPostRepository>();
+            _fixture = SetupAutoFixture();
+
+            _postRepository = _fixture.Freeze<Mock<IPostRepository>>();
             _postService = new PostService(_postRepository.Object);
         }
 
-        private void SetupFixture()
+        private IFixture SetupAutoFixture()
         {
-            _fixture = new Fixture().Customize(new AutoMoqCustomization());
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList()
+            var fixture = new Fixture().Customize(new AutoMoqCustomization());
+            fixture.Behaviors
+                .OfType<ThrowingRecursionBehavior>().ToList()
                 .ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+            fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+
+            return fixture;
         }
     }
 }
