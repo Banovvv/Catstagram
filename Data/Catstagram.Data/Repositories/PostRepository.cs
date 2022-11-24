@@ -1,4 +1,5 @@
-﻿using Catstagram.Data.Common.Repositories;
+﻿using Catstagram.Data.Common.Exceptions.Models;
+using Catstagram.Data.Common.Repositories;
 using Catstagram.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -32,7 +33,7 @@ namespace Catstagram.Data.Repositories
         {
             return await this.DbSet
                 .Where(x => x.UserId == userId)
-                .ToListAsync();
+                .ToListAsync() ?? throw new NotFoundException("User not found!");
         }
 
         public async Task<IEnumerable<Post>> GetByUsernameAsync(string username)
@@ -40,7 +41,7 @@ namespace Catstagram.Data.Repositories
             return await this.DbSet
                 .Include(x => x.User)
                 .Where(x => x.User.Username == username)
-                .ToListAsync();
+                .ToListAsync() ?? throw new NotFoundException("User not found!");
         }
 
         public async Task<IEnumerable<Post>> GetTopTenAsync()
