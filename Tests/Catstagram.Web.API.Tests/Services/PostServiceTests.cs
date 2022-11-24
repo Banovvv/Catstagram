@@ -1,5 +1,6 @@
 ﻿using AutoFixture;
 using AutoFixture.AutoMoq;
+using Catstagram.Data.Common.Exceptions.Models;
 using Catstagram.Data.Common.Repositories;
 using Catstagram.Data.Models;
 using Catstagram.Services.Data;
@@ -33,6 +34,31 @@ namespace Catstagram.Web.API.Tests.Services
 
             //Assert
             Assert.Equal(posts.Count(), result.Count());
+        }
+
+        [Fact]
+        public async Task GetByIdAsync_WithExistingPost_ReturnsAcurateResult()
+        {
+            //Assert
+            var post = _fixture.Build<Post>().With(x => x.Id, 1).Create();
+            _postRepository.Setup(x => x.GetByIdAsync(post.Id)).ReturnsAsync(post);
+
+            //Act
+            var result = await _postService.GetByIdAsync(post.Id);
+
+            //Assert
+            Assert.Equal(post.Id, result?.Id);
+        }
+
+        [Fact]
+        public async Task GetByIdAsync_WithNonExistingPost_ThrowsNotFoundError()
+        {
+            //Assert
+            var post = _fixture.Build<Post>().With(x => x.Id, 1).Create();
+            _postRepository.Setup(x => x.GetByIdAsync(post.Id)).ReturnsAsync((Post?)null);
+
+            //Assert
+            await Assert.ThrowsAsync<NotFoundException>(() => _postService.GetByIdAsync(post.Id));
         }
 
         [Fact]
