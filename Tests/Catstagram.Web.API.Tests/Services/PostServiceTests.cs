@@ -62,6 +62,30 @@ namespace Catstagram.Web.API.Tests.Services
         }
 
         [Fact]
+        public async Task GetByUserIdAsync_ReturnsAcurateResult()
+        {
+            //Assert
+            var posts = _fixture.Build<Post>().With(x=>x.UserId, 1).CreateMany(5);
+            _postRepository.Setup(x => x.GetByUserIdAsync(posts.First().UserId)).ReturnsAsync(posts);
+
+            //Act
+            var result = await _postService.GetByUserIdAsync(posts.First().UserId);
+
+            //Assert
+            Assert.Equal(posts.Count(), result.Count());
+        }
+
+        [Fact]
+        public async Task GetByUserIdAsync_ThrowsNotFoundError()
+        {
+            //Assert
+            _postRepository.Setup(x => x.GetByUserIdAsync(11)).ThrowsAsync(new NotFoundException());
+
+            //Assert
+            await Assert.ThrowsAsync<NotFoundException>(() => _postRepository.Object.GetByUserIdAsync(11));
+        }
+
+        [Fact]
         public void GetCount_ReturnsAccurateResult()
         {
             //Assert
