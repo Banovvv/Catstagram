@@ -23,7 +23,7 @@ namespace Catstagram.Web.API.Tests.Services
         }
 
         [Fact]
-        public async Task GetAllAsync_ReturnsAllArticles()
+        public async Task GetAllAsync_ReturnsAllPosts()
         {
             //Assert
             var posts = _fixture.Build<Post>().CreateMany(5);
@@ -37,7 +37,7 @@ namespace Catstagram.Web.API.Tests.Services
         }
 
         [Fact]
-        public async Task GetAllAsync_ReturnsNoArticles()
+        public async Task GetAllAsync_ReturnsNoPosts()
         {
             //Assert
             var posts = _fixture.Build<Post>().CreateMany(0);
