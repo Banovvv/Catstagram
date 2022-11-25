@@ -29,6 +29,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\Catstagram.Data.Common\Catstagram.Data.Common.csproj" />
     <ProjectReference Include="..\..\Services\Catstagram.Services.Data\Catstagram.Services.Data.csproj" />
+    <ProjectReference Include="..\..\Web\Catstagram.Web.API\Catstagram.Web.API.csproj" />
   </ItemGroup>
 
 </Project>
