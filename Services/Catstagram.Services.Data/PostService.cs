@@ -37,11 +37,6 @@ namespace Catstagram.Services.Data
             return await _repository.GetByUserIdAsync(userId);
         }
 
-        public async Task<IEnumerable<Post>> GetByUsernameAsync(string username)
-        {
-            return await _repository.GetByUsernameAsync(username);
-        }
-
         public int GetCount()
         {
             return _repository.GetCount();
