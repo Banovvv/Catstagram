@@ -37,6 +37,20 @@ namespace Catstagram.Web.API.Tests.Services
         }
 
         [Fact]
+        public async Task GetAllAsync_ReturnsNoArticles()
+        {
+            //Assert
+            var posts = _fixture.Build<Post>().CreateMany(0);
+            _postRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(posts);
+
+            //Act
+            var result = await _postService.GetAllAsync();
+
+            //Assert
+            Assert.Equal(posts.Count(), result.Count());
+        }
+
+        [Fact]
         public async Task GetByIdAsync_WithExistingPost_ReturnsAcurateResult()
         {
             //Assert

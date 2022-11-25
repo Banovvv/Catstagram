@@ -2,7 +2,6 @@
 using Catstagram.Data.Common.Repositories;
 using Catstagram.Data.Models;
 using Catstagram.Services.Data.Contracts;
-using Catstagram.Services.Data.Models;
 
 namespace Catstagram.Services.Data
 {
