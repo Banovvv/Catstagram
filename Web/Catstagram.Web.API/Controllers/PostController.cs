@@ -32,7 +32,7 @@ namespace Catstagram.Web.API.Controllers
         {
             var topTen = await _postService.GetTopTenAsync();
 
-            var responsePosts = _mapper.Map<PostResponseModel>(topTen);
+            var responsePosts = _mapper.Map<List<PostResponseModel>>(topTen);
 
             return Ok(responsePosts);
         }

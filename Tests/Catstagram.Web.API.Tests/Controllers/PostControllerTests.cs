@@ -61,5 +61,31 @@ namespace Catstagram.Web.API.Tests.Controllers
             Assert.IsType<OkObjectResult>(result.Result);
             Assert.Equal(posts.Count(), resultObject.Count());
         }
+
+        [Fact]
+        public async Task GetAllAsync_ReturnsAccurateResult_WhenMoreThanTenPosts()
+        {
+            var posts = _fixture.Build<Post>().CreateMany(15);
+            _postService.Setup(x => x.GetTopTenAsync()).ReturnsAsync(posts.Take(10));
+
+            var result = await _postController.GetTopTenAsync();
+
+            var resultObject = TestHelper.GetObjectResultContent(result);
+            Assert.IsType<OkObjectResult>(result.Result);
+            Assert.Equal(10, resultObject.Count());
+        }
+
+        [Fact]
+        public async Task GetAllAsync_ReturnsAccurateResult_WhenLessThanTenPosts()
+        {
+            var posts = _fixture.Build<Post>().CreateMany(7);
+            _postService.Setup(x => x.GetTopTenAsync()).ReturnsAsync(posts);
+
+            var result = await _postController.GetTopTenAsync();
+
+            var resultObject = TestHelper.GetObjectResultContent(result);
+            Assert.IsType<OkObjectResult>(result.Result);
+            Assert.Equal(7, resultObject.Count());
+        }
     }
 }
