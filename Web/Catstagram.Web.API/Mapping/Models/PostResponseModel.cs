@@ -10,6 +10,5 @@ namespace Catstagram.Web.API.Mapping.Models
         public DateTime CreatedOn { get; set; }
         public DateTime? LastUpdatedOn { get; set; }
         public int UserId { get; set; }
-        public virtual ICollection<TagResponseModel> Tags { get; set; }
     }
 }

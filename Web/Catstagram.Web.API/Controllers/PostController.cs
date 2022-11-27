@@ -22,7 +22,7 @@ namespace Catstagram.Web.API.Controllers
         {
             var posts = await _postService.GetAllAsync();
 
-            var responsePosts = _mapper.Map<PostResponseModel>(posts);
+            var responsePosts = _mapper.Map<List<PostResponseModel>>(posts);
 
             return Ok(responsePosts);
         }
