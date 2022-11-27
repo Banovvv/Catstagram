@@ -22,10 +22,5 @@ namespace Catstagram.Services.Data
         {
             return await this.repository.GetAllByUserAsync(id);
         }
-
-        public async Task<IEnumerable<Comment>> GetALLByUserAsync(string username)
-        {
-            return await this.repository.GetAllByUserAsync(username);
-        }
     }
 }

@@ -35,13 +35,5 @@ namespace Catstagram.Data.Repositories
                 .Where(x => x.UserId == id)
                 .ToListAsync();
         }
-
-        public async Task<IEnumerable<Comment>> GetAllByUserAsync(string username)
-        {
-            return await this.DbSet
-                .Include(x => x.User)
-                .Where(x => x.User.Username == username)
-                .ToListAsync();
-        }
     }
 }
