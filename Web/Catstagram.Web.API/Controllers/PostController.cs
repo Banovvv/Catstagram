@@ -2,6 +2,7 @@
 using Catstagram.Services.Data.Contracts;
 using Catstagram.Services.Data.Models;
 using Catstagram.Web.API.Mapping.Models;
+using Catstagram.Web.API.Validations;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
@@ -48,7 +49,7 @@ namespace Catstagram.Web.API.Controllers
 
             if (!validationResult.IsValid)
             {
-
+                validationResult.AddToModelState(ModelState);
             }
 
             var createdPost = await _postService.CreatePostAsync(postInput);
