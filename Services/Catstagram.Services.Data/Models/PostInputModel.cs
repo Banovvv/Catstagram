@@ -1,4 +1,4 @@
-﻿namespace Catstagram.Web.API.Mapping.Models
+﻿namespace Catstagram.Services.Data.Models
 {
     public class PostInputModel
     {

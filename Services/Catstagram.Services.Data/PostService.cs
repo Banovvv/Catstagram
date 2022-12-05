@@ -2,6 +2,7 @@
 using Catstagram.Data.Common.Repositories;
 using Catstagram.Data.Models;
 using Catstagram.Services.Data.Contracts;
+using Catstagram.Services.Data.Models;
 
 namespace Catstagram.Services.Data
 {
@@ -12,6 +13,11 @@ namespace Catstagram.Services.Data
         public PostService(IPostRepository repository)
         {
             _repository = repository;
+        }
+
+        public Task<string> CreatePostAsync(PostInputModel postInput)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<Post>> GetAllAsync()
