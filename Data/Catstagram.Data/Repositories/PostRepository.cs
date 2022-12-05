@@ -26,6 +26,9 @@ namespace Catstagram.Data.Repositories
         public async Task<IEnumerable<Post>> GetAllAsync()
         {
             return await this.DbSet
+                .Include(x => x.User)
+                .Include(x => x.Likes)
+                .Include(x => x.Comments)
                 .ToListAsync();
         }
 
