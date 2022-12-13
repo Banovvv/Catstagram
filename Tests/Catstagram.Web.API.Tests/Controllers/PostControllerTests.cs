@@ -6,7 +6,9 @@ using Catstagram.Web.API.Controllers;
 using Catstagram.Web.API.Mapping.Models;
 using Catstagram.Web.API.Tests.Utils;
 using Microsoft.AspNetCore.Mvc;
+using FluentValidation;
 using Moq;
+using Catstagram.Services.Data.Models;
 
 namespace Catstagram.Web.API.Tests.Controllers
 {
@@ -16,6 +18,7 @@ namespace Catstagram.Web.API.Tests.Controllers
         private readonly IMapper _mapper;
         private readonly PostController _postController;
         private readonly Mock<IPostService> _postService;
+        private readonly AbstractValidator<PostInputModel> _validator;
 
         public PostControllerTests()
         {
@@ -31,9 +34,10 @@ namespace Catstagram.Web.API.Tests.Controllers
                 IMapper mapper = mappingConfig.CreateMapper();
                 _mapper = mapper;
             }
-
+            
             _postService = _fixture.Freeze<Mock<IPostService>>();
-            _postController = new PostController(_postService.Object, _mapper);
+            _validator = _fixture.Freeze<AbstractValidator<PostInputModel>>();
+            _postController = new PostController(_postService.Object, _mapper, _validator);
         }
 
         [Fact]
