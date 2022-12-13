@@ -8,7 +8,7 @@ namespace Catstagram.Web.API.Validations
     {
         public PostValidator()
         {
-            RuleFor(x=>x.Caption).NotEmpty().Length(1, ConfigurationConstants.PostCaptionMaxLength);
+            RuleFor(x => x.Caption).NotEmpty().Length(1, ConfigurationConstants.PostCaptionMaxLength);
         }
     }
 }
