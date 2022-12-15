@@ -2,7 +2,7 @@
 
 namespace Catstagram.Data.Common.Repositories
 {
-    public interface ICommentRepository
+    public interface ICommentRepository : IRepository<Comment>
     {
         int GetCount();
         Task<Comment?> GetByIdAsync(int id);

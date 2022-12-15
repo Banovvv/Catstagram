@@ -2,7 +2,7 @@
 
 namespace Catstagram.Data.Common.Repositories
 {
-    public interface IUserRepository
+    public interface IUserRepository : IRepository<User>
     {
         int GetCount();
         Task<IEnumerable<User>> GetAllAsync();
