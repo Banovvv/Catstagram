@@ -16,9 +16,25 @@ namespace Catstagram.Services.Data
             _repository = repository;
         }
 
-        public Task<string> CreatePostAsync(PostInputModel postInput)
-        {
-            throw new NotImplementedException();
+        public async Task<string> CreatePostAsync(PostInputModel postInput)
+        {            
+            var post = new Post()
+            {
+                Caption = postInput.Caption,
+                UserId = postInput.UserId,
+                CreatedOn = DateTime.UtcNow,
+                LastUpdatedOn = DateTime.UtcNow
+            };
+
+            foreach(var tag in postInput.Tags)
+            {
+                // TODO: Check if tag exists, if not create it
+                // TODO: Add tag to post
+            }
+
+            await _repository.AddAsync(post);
+
+            return ValidationMessages.PostCreatedSuccessfully;
         }
 
         public async Task<IEnumerable<Post>> GetAllAsync()
