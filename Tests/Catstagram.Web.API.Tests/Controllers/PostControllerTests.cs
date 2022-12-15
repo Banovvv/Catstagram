@@ -10,6 +10,7 @@ using FluentValidation;
 using Moq;
 using Catstagram.Services.Data.Models;
 using Catstagram.Data.Common.Constants;
+using FluentValidation.Results;
 
 namespace Catstagram.Web.API.Tests.Controllers
 {
@@ -19,7 +20,7 @@ namespace Catstagram.Web.API.Tests.Controllers
         private readonly IMapper _mapper;
         private readonly PostController _postController;
         private readonly Mock<IPostService> _postService;
-        private readonly AbstractValidator<PostInputModel> _validator;
+        private readonly Mock<IValidator<PostInputModel>> _validator;
 
         public PostControllerTests()
         {
@@ -37,8 +38,8 @@ namespace Catstagram.Web.API.Tests.Controllers
             }
             
             _postService = _fixture.Freeze<Mock<IPostService>>();
-            _validator = _fixture.Freeze<AbstractValidator<PostInputModel>>();
-            _postController = new PostController(_postService.Object, _mapper, _validator);
+            _validator = _fixture.Freeze<Mock<IValidator<PostInputModel>>>();
+            _postController = new PostController(_postService.Object, _mapper, _validator.Object);
         }
 
         [Fact]
@@ -98,6 +99,7 @@ namespace Catstagram.Web.API.Tests.Controllers
         {
             var inputPost = _fixture.Build<PostInputModel>().Create();
             _postService.Setup(x => x.CreatePostAsync(inputPost)).ReturnsAsync(ValidationMessages.PostCreatedSuccessfully);
+            _validator.Setup(validator => validator.ValidateAsync(inputPost, It.IsAny<CancellationToken>())).ReturnsAsync(new ValidationResult());
 
             var result = await _postController.CreatePostAsync(inputPost);
 
