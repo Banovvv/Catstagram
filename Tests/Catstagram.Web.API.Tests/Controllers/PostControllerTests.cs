@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using FluentValidation;
 using Moq;
 using Catstagram.Services.Data.Models;
+using Catstagram.Data.Common.Constants;
 
 namespace Catstagram.Web.API.Tests.Controllers
 {
@@ -90,6 +91,17 @@ namespace Catstagram.Web.API.Tests.Controllers
             var resultObject = TestHelper.GetObjectResultContent(result);
             Assert.IsType<OkObjectResult>(result.Result);
             Assert.Equal(7, resultObject.Count());
+        }
+
+        [Fact]
+        public async Task CreatePostAsync_ReturnsCreated_WithNewValidPost()
+        {
+            var inputPost = _fixture.Build<PostInputModel>().Create();
+            _postService.Setup(x => x.CreatePostAsync(inputPost)).ReturnsAsync(ValidationMessages.PostCreatedSuccessfully);
+
+            var result = await _postController.CreatePostAsync(inputPost);
+
+            Assert.IsType<CreatedResult>(result.Result);
         }
     }
 }

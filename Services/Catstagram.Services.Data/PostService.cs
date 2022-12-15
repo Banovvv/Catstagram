@@ -1,4 +1,5 @@
-﻿using Catstagram.Data.Common.Exceptions.Models;
+﻿using Catstagram.Data.Common.Constants;
+using Catstagram.Data.Common.Exceptions.Models;
 using Catstagram.Data.Common.Repositories;
 using Catstagram.Data.Models;
 using Catstagram.Services.Data.Contracts;
@@ -31,7 +32,7 @@ namespace Catstagram.Services.Data
 
             if (post == null)
             {
-                throw new NotFoundException("Post not found!");
+                throw new NotFoundException(ValidationMessages.PostNotFoud);
             }
 
             return post;

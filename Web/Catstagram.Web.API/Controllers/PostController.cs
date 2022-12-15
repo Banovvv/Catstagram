@@ -43,7 +43,7 @@ namespace Catstagram.Web.API.Controllers
         }
 
         [HttpPost("AddPost")]
-        public async Task<IActionResult> CreatePostAsync([FromBody] PostInputModel postInput)
+        public async Task<ActionResult<string>> CreatePostAsync([FromBody] PostInputModel postInput)
         {
             var validationResult = await _validator.ValidateAsync(postInput);
 
