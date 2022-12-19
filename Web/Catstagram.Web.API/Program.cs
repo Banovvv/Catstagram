@@ -3,11 +3,10 @@ using Catstagram.Data.Common.Repositories;
 using Catstagram.Data.Repositories;
 using Catstagram.Services.Data;
 using Catstagram.Services.Data.Contracts;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
-using AutoMapper;
 using Catstagram.Web.API.Validations;
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
