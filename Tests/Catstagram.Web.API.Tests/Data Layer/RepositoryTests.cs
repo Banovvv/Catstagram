@@ -16,7 +16,7 @@ namespace Catstagram.Web.API.Tests.Repositories
 
         public RepositoryTests()
         {
-            TestHelper.SetupAutoFixture();
+            _fixture = TestHelper.SetupAutoFixture();
 
             _user = _fixture.Build<User>().Create();
 
