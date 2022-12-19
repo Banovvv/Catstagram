@@ -31,5 +31,18 @@ namespace Catstagram.Web.API.Tests.Repositories
 
             _repository = new Repository<User>(_db);
         }
+
+        [Fact]
+        public async Task AddAsync_WithGivenEntity_ShouldAddTheEntityToDb()
+        {
+            //Act
+            await _repository.AddAsync(_user);
+            await _db.SaveChangesAsync();
+
+            var result = _repository.All();
+
+            //Assert
+            Assert.Equal(3, result.Count());
+        }
     }
 }
