@@ -19,7 +19,7 @@ namespace Catstagram.Data.Configurations
                 .IsRequired(true);
 
             comment.Property(x => x.UserId)
-                .IsRequired(true);
+                .IsRequired(false);
 
             comment.Property(x => x.PostId)
                 .IsRequired(true);

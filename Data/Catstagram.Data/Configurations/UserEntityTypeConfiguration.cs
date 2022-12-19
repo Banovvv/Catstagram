@@ -49,11 +49,11 @@ namespace Catstagram.Data.Configurations
 
             user.HasMany(x => x.Likes)
                 .WithOne(x => x.User)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.Cascade);
 
             user.HasMany(x => x.Comments)
                 .WithOne(x => x.User)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
