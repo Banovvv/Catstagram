@@ -61,5 +61,15 @@ namespace Catstagram.Web.API.Tests.Repositories
             //Assert
             Assert.Equal(2, result.Count());
         }
+
+        [Fact]
+        public void All_ShouldReturnAllEntities()
+        {
+            //Act
+            var result = _repository.All();
+
+            //Assert
+            Assert.Equal(2, result.Count());
+        }
     }
 }
