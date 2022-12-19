@@ -24,6 +24,7 @@ namespace Catstagram.Data.Repositories
         public IQueryable<TEntity> AllAsNoTracking() => this.DbSet.AsNoTracking();
 
         public void Delete(TEntity entity) => this.DbSet.Remove(entity);
+
         public Task<int> SaveChangesAsync() => this.Context.SaveChangesAsync();
 
         public void Update(TEntity entity)
