@@ -6,6 +6,7 @@ namespace Catstagram.Services.Data.Contracts
     {
         Task<Tag?> GetByIdAsync(int id);
         Task<Tag?> GetByNameAsync(string name);
+        Task<string> CreateTagAsync(string name);
         Task<IEnumerable<Tag>> GetAllAsync();
     }
 }

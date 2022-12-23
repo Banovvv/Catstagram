@@ -1,4 +1,5 @@
-﻿using Catstagram.Data.Common.Repositories;
+﻿using Catstagram.Data.Common.Constants;
+using Catstagram.Data.Common.Repositories;
 using Catstagram.Data.Models;
 using Catstagram.Services.Data.Contracts;
 
@@ -11,6 +12,20 @@ namespace Catstagram.Services.Data
         public TagService(ITagRepository repository)
         {
             this.repository = repository;
+        }
+
+        public async Task<string> CreateTagAsync(string name)
+        {
+            var tag = await this.repository.GetByNameAsync(name);
+
+            if (tag != null)
+            {
+                // TODO: throw if tag exists
+            }
+
+            await this.repository.AddAsync(new Tag() { Name = name });
+
+            return ValidationMessages.TagCreatedSuccessfully;
         }
 
         public async Task<IEnumerable<Tag>> GetAllAsync()
