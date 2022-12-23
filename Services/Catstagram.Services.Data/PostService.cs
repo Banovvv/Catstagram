@@ -9,15 +9,18 @@ namespace Catstagram.Services.Data
 {
     public class PostService : IPostService
     {
+        private readonly ITagService _tagService;
         private readonly IPostRepository _repository;
 
-        public PostService(IPostRepository repository)
+        public PostService(IPostRepository repository,
+                           ITagService tagService)
         {
             _repository = repository;
+            _tagService = tagService;
         }
 
         public async Task<string> CreatePostAsync(PostInputModel postInput)
-        {            
+        {
             var post = new Post()
             {
                 Caption = postInput.Caption,
@@ -26,10 +29,14 @@ namespace Catstagram.Services.Data
                 LastUpdatedOn = DateTime.UtcNow
             };
 
-            foreach(var tag in postInput.Tags)
+            foreach (var tagInput in postInput.Tags)
             {
-                // TODO: Check if tag exists, if not create it
-                // TODO: Add tag to post
+                var tag = await _tagService.GetByNameAsync(tagInput);
+
+                if (tag == null)
+                {
+                    //TODO: add the tag
+                }
             }
 
             await _repository.AddAsync(post);

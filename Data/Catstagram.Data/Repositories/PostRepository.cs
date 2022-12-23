@@ -8,7 +8,8 @@ namespace Catstagram.Data.Repositories
 {
     public class PostRepository : Repository<Post>, IPostRepository
     {
-        public PostRepository(CatsDataContext context) : base(context)
+        public PostRepository(CatsDataContext context)
+            : base(context)
         {
         }
 
