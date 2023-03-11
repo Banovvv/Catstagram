@@ -5,9 +5,9 @@
     {
         IQueryable<TEntity> All();
         IQueryable<TEntity> AllAsNoTracking();
-        Task AddAsync(TEntity entity);
+        Task AddAsync(TEntity entity, CancellationToken cancellationToken = default);
         void Update(TEntity entity);
         void Delete(TEntity entity);
-        Task<int> SaveChangesAsync();
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

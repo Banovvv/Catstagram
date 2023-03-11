@@ -17,7 +17,7 @@ namespace Catstagram.Data.Repositories
         protected DbSet<TEntity> DbSet { get; set; }
         protected CatsDataContext Context { get; set; }
 
-        public Task AddAsync(TEntity entity) => this.DbSet.AddAsync(entity).AsTask();
+        public Task AddAsync(TEntity entity, CancellationToken cancellationToken = default) => this.DbSet.AddAsync(entity,cancellationToken).AsTask();
 
         public IQueryable<TEntity> All() => this.DbSet;
 
@@ -25,7 +25,7 @@ namespace Catstagram.Data.Repositories
 
         public void Delete(TEntity entity) => this.DbSet.Remove(entity);
 
-        public Task<int> SaveChangesAsync() => this.Context.SaveChangesAsync();
+        public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) => this.Context.SaveChangesAsync(cancellationToken);
 
         public void Update(TEntity entity)
         {
