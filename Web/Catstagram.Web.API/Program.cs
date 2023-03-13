@@ -1,8 +1,5 @@
 using Catstagram.Data;
-using Catstagram.Data.Common.Repositories;
-using Catstagram.Data.Repositories;
 using Catstagram.Services.Data;
-using Catstagram.Services.Data.Contracts;
 using Catstagram.Web.API.Validations;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
@@ -29,8 +26,9 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services
     .AddDbContext<CatsDataContext>(options =>
         options.UseSqlServer(configuration.GetConnectionString("DefaultConnectionString")));
-builder.Services.AddScoped<IPostRepository, PostRepository>();
-builder.Services.AddScoped<IPostService, PostService>();
+
+builder.Services.AddCatstagramServices();
+builder.Services.AddCatstagramRepositories();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
