@@ -53,12 +53,7 @@ namespace Catstagram.Services.Data
         {
             var post = await _repository.GetByIdAsync(id);
 
-            if (post == null)
-            {
-                throw new NotFoundException(ValidationMessages.PostNotFoud);
-            }
-
-            return post;
+            return post ?? throw new NotFoundException(ValidationMessages.PostNotFoud);
         }
 
         public async Task<IEnumerable<Post>> GetByUserIdAsync(int userId)
